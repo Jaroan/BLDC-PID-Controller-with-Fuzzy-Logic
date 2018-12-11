@@ -80,9 +80,9 @@ void Defuzzification(){
 	Ki_large=max(Fuzzy_Matrix[2][1],Fuzzy_Matrix[2][2]);
 	Ki_medium=max(Fuzzy_Matrix[0][1],max(Fuzzy_Matrix[1][0],max(Fuzzy_Matrix[1][1],max(Fuzzy_Matrix[1][2],Fuzzy_Matrix[2][1]))));
 
-	Kp_large=max(Fuzzy_Matrix[0][0],Fuzzy_Matrix[0][1]);
-	Kp_small=max(Fuzzy_Matrix[2][1],Fuzzy_Matrix[2][2]);
-	Kp_medium=max(Fuzzy_Matrix[0][1],max(Fuzzy_Matrix[1][0],max(Fuzzy_Matrix[1][1],max(Fuzzy_Matrix[1][2],Fuzzy_Matrix[2][1]))));
+	Kd_large=max(Fuzzy_Matrix[0][0],Fuzzy_Matrix[0][1]);
+	Kd_small=max(Fuzzy_Matrix[2][1],Fuzzy_Matrix[2][2]);
+	Kd_medium=max(Fuzzy_Matrix[0][1],max(Fuzzy_Matrix[1][0],max(Fuzzy_Matrix[1][1],max(Fuzzy_Matrix[1][2],Fuzzy_Matrix[2][1]))));
 
 
 	Kp=(Kp_s*Kp_small+Kp_m*Kp_medium+Kp_l*Kp_large)/(Kp_small+Kp_medium+Kp_large);
