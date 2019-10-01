@@ -25,6 +25,8 @@ void init(){
     for(j=0;j<3;j++) Fuzzy_Matrix[i][j]=0;
   }
 }
+
+//fuzzification
 void Fuzzification(){
   NE=0; PDE=0; NDE=0; PE=0;
   if(error<=-20) NE=20;
@@ -52,6 +54,8 @@ void Fuzzification(){
     }
   }
 }
+
+//creation of the fuzzy matrix
 void Create_Fuzzy_Matrix(){
   Fuzzy_Matrix[0][0]=min(NE,NDE);
   Fuzzy_Matrix[0][1]=min(NE,ZDE);
@@ -63,6 +67,8 @@ void Create_Fuzzy_Matrix(){
   Fuzzy_Matrix[2][1]=min(PE,ZDE);
   Fuzzy_Matrix[2][2]=min(PE,PDE);
 }
+
+//This part h=gives us the physical values for the coefficients
 void Defuzzification(){
   Kp_large=max(Fuzzy_Matrix[0][0],Fuzzy_Matrix[0][1]);
   Kp_small=max(Fuzzy_Matrix[2][1],Fuzzy_Matrix[2][2]);
@@ -76,6 +82,7 @@ void Defuzzification(){
   if(!(Ki_small==0 && Ki_medium==0 && Ki_large==0)) Ki=(Ki_s*Ki_small+Ki_m*Ki_medium+Ki_l*Ki_large)/(Ki_small+Ki_medium+Ki_large);
   
 }
+
 float Compute_PWM(){
   err_sum+=error;
   out=Kp*error + Ki*err_sum;
@@ -84,6 +91,7 @@ float Compute_PWM(){
   else if(out<0) out=0;
   return out;
 }
+
 int main(){
 	int e,i;
 	init();
